@@ -31,13 +31,12 @@ public class OrderController {
         while(true){
             System.out.print("상품번호: ");
             String pId = sc.nextLine();
+            if(pId.isBlank()){
+                break;
+            }
             System.out.print("수량: ");
             String pNumber = sc.nextLine();
-            if(pId.isBlank() || pNumber.isBlank()){ // 둘 중 하나라도 빈칸이면 주문 종료
-                break;
-            }else{
-                orderList.put(Long.valueOf(pId), Integer.valueOf(pNumber));
-            }
+            orderList.put(Long.valueOf(pId), Integer.valueOf(pNumber));
         }
         try{
             return orderService.checkOrder(orderList, GoodList); // 생성된 주문 리스트로 주문 체크
@@ -57,8 +56,9 @@ public class OrderController {
             System.out.println(goodDto.getName() + " - " + goodDto.getQuantity() + "개");
         }
         System.out.println("-----------------------------------------------------");
-        System.out.println("주문 금액: " + decFormat.format(receiptDto.getTotalGoodsPrice()));
+        System.out.println("주문금액: " + decFormat.format(receiptDto.getTotalGoodsPrice())+"원");
+        System.out.println("배달비: " + decFormat.format(receiptDto.getDeliveryPrice())+"원");
         System.out.println("-----------------------------------------------------");
-        System.out.println("지불 금액: " + decFormat.format(receiptDto.getTotalPrice()));
+        System.out.println("지불금액: " + decFormat.format(receiptDto.getTotalPrice())+"원");
     }
 }
