@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.Scanner;
@@ -49,14 +50,15 @@ public class OrderController {
 
     // 주문 정보 출력 메서드
     public void printOrderInfo(ReceiptDto receiptDto){
+        DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println("주문 내역: ");
         System.out.println("-----------------------------------------------------");
         for (ReceiptDto.GoodDto goodDto : receiptDto.getGoodsList()) {
-            System.out.println(goodDto.getName() + " " + goodDto.getQuantity() + "개");
+            System.out.println(goodDto.getName() + " - " + goodDto.getQuantity() + "개");
         }
         System.out.println("-----------------------------------------------------");
-        System.out.println("주문 금액: " + receiptDto.getTotalGoodsPrice());
+        System.out.println("주문 금액: " + decFormat.format(receiptDto.getTotalGoodsPrice()));
         System.out.println("-----------------------------------------------------");
-        System.out.println("지불 금액: " + receiptDto.getTotalPrice());
+        System.out.println("지불 금액: " + decFormat.format(receiptDto.getTotalPrice()));
     }
 }
