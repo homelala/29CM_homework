@@ -33,7 +33,7 @@ public class HomeworkApplication {
 
 			if(select.equals("o") || select.equals("order")){
 				ReceiptDto receipt = orderController.createOrder(); //OrderController의 createOrder 실행 후  ReceiptDto 생성
-				if(receipt.getGoodsList().isEmpty()) continue;
+				if(receipt.getGoodsList().isEmpty()) continue; // soldOutException 발생
 				orderController.printOrderInfo(receipt); // 반환된 주문 정보를 통해 프린트 메서드 호출
 			}else if(select.equals("q") || select.equals("quit")){
 				System.out.println("고객님의 주문 감사합니다.");

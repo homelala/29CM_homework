@@ -28,7 +28,7 @@ public class OrderService {
                 throw new SoldOutException();
             }
             goods.put(goodsInfo.getName(), temp.getValue());
-            totalPrice += goodsInfo.getPrice();
+            totalPrice += goodsInfo.getPrice()*temp.getValue();
         }
         ReceiptDto receiptDto = new ReceiptDto(goods, totalPrice); // 영수증 목록 생성
         return receiptDto;
