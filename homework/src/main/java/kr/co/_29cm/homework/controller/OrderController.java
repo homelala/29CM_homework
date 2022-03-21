@@ -39,7 +39,7 @@ public class OrderController {
         try{
             return orderService.checkOrder(orderList, GoodList); // 생성된 주문 리스트로 주문 체크
         }catch(SoldOutException exception){
-            System.out.println("SoldOutException 발생. 주문한 상품량이 재고량보다 큽니다.");
+            System.out.print("SoldOutException 발생. 주문한 상품량이 재고량보다 큽니다.");
             HashMap<String, Integer> temp = new HashMap<>();
             return new ReceiptDto(temp,0);
         }
@@ -58,5 +58,6 @@ public class OrderController {
         System.out.println("배달비: " + decFormat.format(receiptDto.getDeliveryPrice())+"원");
         System.out.println("-----------------------------------------------------");
         System.out.println("지불금액: " + decFormat.format(receiptDto.getTotalPrice())+"원");
+        System.out.println("-----------------------------------------------------");
     }
 }
