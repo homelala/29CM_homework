@@ -2,13 +2,11 @@ package kr.co._29cm.homework;
 
 import kr.co._29cm.homework.controller.OrderController;
 import kr.co._29cm.homework.dto.ReceiptDto;
-import kr.co._29cm.homework.error.SoldOutException;
 import kr.co._29cm.homework.service.GoodsService;
 import kr.co._29cm.homework.service.OrderService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 @SpringBootApplication

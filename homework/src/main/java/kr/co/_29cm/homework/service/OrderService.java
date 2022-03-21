@@ -4,10 +4,7 @@ import kr.co._29cm.homework.domain.Goods;
 import kr.co._29cm.homework.dto.ReceiptDto;
 import kr.co._29cm.homework.error.SoldOutException;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service

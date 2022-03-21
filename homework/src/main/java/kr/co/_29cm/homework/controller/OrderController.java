@@ -8,10 +8,8 @@ import kr.co._29cm.homework.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 
-import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.Scanner;
 
 @Controller
