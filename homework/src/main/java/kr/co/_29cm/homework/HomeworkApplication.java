@@ -14,22 +14,33 @@ import java.util.Scanner;
 @SpringBootApplication
 public class HomeworkApplication {
 
-	public static void main(String[] args) throws FileNotFoundException, SoldOutException {
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(HomeworkApplication.class, args);
+
+		// OrderController 생성, 인자(OrderService, GoodsService)
 		OrderController orderController = new OrderController(new OrderService(), new GoodsService());
 
+		// 주문 시작 메소드 호출
+		startOrder(orderController);
+	}
+
+	// 주문 시작 메소드
+	private static void startOrder(OrderController orderController) throws Exception {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("입력(o[order]: 주문, q[quit]: 종료) : ");
-		String select = scanner.next();
-		if(select.equals("o") || select.equals("order")){
-			ReceiptDto receipt = orderController.createOrder();
-			orderController.printOrderInfo(receipt);
-			return;
-		}else if(select.equals("q") || select.equals("quit")){
-			System.out.println("고객님의 주문 감사합니다.");
-			return;
-		}else{
-			System.out.println("올바른 문구를 입력해주세요.");
+		while(true){
+			System.out.println("입력(o[order]: 주문, q[quit]: 종료) : ");
+			String select = scanner.next();
+
+			if(select.equals("o") || select.equals("order")){
+				ReceiptDto receipt = orderController.createOrder(); //OrderController의 createOrder 실행 후  ReceiptDto 생성
+				if(receipt.getGoodsList().isEmpty()) continue;
+				orderController.printOrderInfo(receipt); // 반환된 주문 정보를 통해 프린트 메서드 호출
+			}else if(select.equals("q") || select.equals("quit")){
+				System.out.println("고객님의 주문 감사합니다.");
+				return;
+			}else{
+				System.out.println("올바른 문구를 입력해주세요.");
+			}
 		}
 	}
 }

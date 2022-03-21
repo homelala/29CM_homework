@@ -23,6 +23,10 @@ public class ReceiptDto {
         }
     }
 
+    protected ReceiptDto() {
+
+    }
+
     public ReceiptDto(HashMap<String, Integer> goodList, int totalPrice){
         this.goodsList = goodList.entrySet().stream().map(goods -> new GoodDto(goods))
                 .collect(Collectors.toList());

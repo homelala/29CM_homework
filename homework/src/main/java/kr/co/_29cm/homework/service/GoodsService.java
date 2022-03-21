@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class GoodsService {
     private static HashMap<Long, Goods> goodsList = new HashMap<>();
 
+    // csv 파일로부터 상품 리스트 생성 메서드
     public HashMap<Long, Goods> insertGoods() throws FileNotFoundException {
         URL resource = GoodsService.class.getClassLoader().getResource("itemList.csv");
         String path = resource.getPath();
